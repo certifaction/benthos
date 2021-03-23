@@ -13,6 +13,7 @@ input:
       password: ""
       user: ""
     source_address: ""
+    renew_lock: false
     tls:
       client_certs: []
       enabled: false
