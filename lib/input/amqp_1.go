@@ -42,6 +42,7 @@ You can access these metadata fields using
 			),
 			docs.FieldCommon("source_address", "The source address to consume from.", "/foo", "queue:/bar", "topic:/baz"),
 			docs.FieldCommon("renew_lock", "Azure service bus specific option to renew lock if processing takes more then configured lock time", true, false),
+			docs.FieldCommon("link_credit", "Specifies the maximum number of unacknowledged messages the sender can transmit, defaults to 10", 20),
 			tls.FieldSpec(),
 			sasl.FieldSpec(),
 		},

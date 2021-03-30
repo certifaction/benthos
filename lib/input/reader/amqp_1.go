@@ -30,6 +30,7 @@ type AMQP1Config struct {
 	URL           string      `json:"url" yaml:"url"`
 	SourceAddress string      `json:"source_address" yaml:"source_address"`
 	RenewLock     bool        `json:"renew_lock" yaml:"renew_lock"`
+	LinkCredit    uint32      `json:"link_credit" yaml:"link_credit"`
 	TLS           btls.Config `json:"tls" yaml:"tls"`
 	SASL          sasl.Config `json:"sasl" yaml:"sasl"`
 }
@@ -39,6 +40,7 @@ func NewAMQP1Config() AMQP1Config {
 	return AMQP1Config{
 		URL:           "",
 		SourceAddress: "",
+		LinkCredit:    10,
 		TLS:           btls.NewConfig(),
 		SASL:          sasl.NewConfig(),
 	}
@@ -122,7 +124,7 @@ func (a *AMQP1) ConnectWithContext(ctx context.Context) error {
 	// Create a receiver
 	if receiver, err = session.NewReceiver(
 		amqp.LinkSourceAddress(a.conf.SourceAddress),
-		amqp.LinkCredit(10),
+		amqp.LinkCredit(a.conf.LinkCredit),
 	); err != nil {
 		session.Close(context.Background())
 		client.Close()
