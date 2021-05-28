@@ -256,7 +256,7 @@ func (a *AMQP1) ReadWithContext(ctx context.Context) (types.Message, AsyncAckFn,
 
 	a.m.RLock()
 	a.pendingMsgs[pendingMsgIndex(amqpMsg)] = &amqp1PendingMsg{
-		msg: msg,
+		msg:              msg,
 		renewDoneChannel: renewDoneChannel,
 	}
 	a.m.RUnlock()
