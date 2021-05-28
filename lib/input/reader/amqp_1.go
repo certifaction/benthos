@@ -262,7 +262,7 @@ func (a *AMQP1) ReadWithContext(ctx context.Context) (types.Message, AsyncAckFn,
 	a.m.RUnlock()
 
 	return msg, func(ctx context.Context, res types.Response) error {
-		msg, ok := a.popPendingMessage(amqpMsg)
+		msg, ok := a.takePendingMessage(amqpMsg)
 		if !ok {
 			return nil
 		}
@@ -278,7 +278,7 @@ func (a *AMQP1) ReadWithContext(ctx context.Context) (types.Message, AsyncAckFn,
 	}, nil
 }
 
-func (a *AMQP1) popPendingMessage(amqpMsg *amqp.Message) (*amqp1PendingMsg, bool) {
+func (a *AMQP1) takePendingMessage(amqpMsg *amqp.Message) (*amqp1PendingMsg, bool) {
 	a.m.Lock()
 	defer a.m.Unlock()
 	msg, ok := a.pendingMsgs[pendingMsgIndex(amqpMsg)]

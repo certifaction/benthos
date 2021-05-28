@@ -223,7 +223,7 @@ func (p *Policy) clear() {
 		if part.Metadata().Get("source_msg_lost") != "true" {
 			newParts = append(newParts, part)
 		} else {
-			p.log.Infoln("lost message")
+			p.log.Infoln("source message expired")
 		}
 	}
 	p.parts = newParts
