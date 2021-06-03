@@ -274,7 +274,13 @@ func (a *AMQP1) ReadWithContext(ctx context.Context) (types.Message, AsyncAckFn,
 		if res.Error() != nil {
 			return amqpMsg.Modify(ctx, true, false, amqpMsg.Annotations)
 		}
-		return amqpMsg.Accept(ctx)
+		err = amqpMsg.Accept(ctx)
+		if err != nil {
+			a.log.Errorf("failed to accept message ID: %v, error: %v", amqpMsg.Properties.MessageID, err)
+		} else {
+			a.log.Tracef("accepted message with ID: %v", amqpMsg.Properties.MessageID)
+		}
+		return err
 	}, nil
 }
 
