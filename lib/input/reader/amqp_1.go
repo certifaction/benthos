@@ -194,6 +194,7 @@ func (a *AMQP1) disconnect(ctx context.Context) error {
 
 	for _, msg := range a.pendingMsgs {
 		_ = msg.msg.Iter(func(_ int, part types.Part) error {
+			a.log.Infof("Skipping message %v", part.Metadata().Get("amqp_message_id"))
 			part.Metadata().Set("source_msg_lost", "true")
 			return nil
 		})
@@ -237,6 +238,8 @@ func (a *AMQP1) ReadWithContext(ctx context.Context) (types.Message, AsyncAckFn,
 		return nil, nil, err
 	}
 
+	a.log.Infof("Got message %v", amqpMsg.Properties.MessageID)
+
 	msg := message.New(nil)
 
 	part := message.NewPart(amqpMsg.GetData())
@@ -245,6 +248,7 @@ func (a *AMQP1) ReadWithContext(ctx context.Context) (types.Message, AsyncAckFn,
 		setMetadata(part, "amqp_content_type", amqpMsg.Properties.ContentType)
 		setMetadata(part, "amqp_content_encoding", amqpMsg.Properties.ContentEncoding)
 		setMetadata(part, "amqp_creation_time", amqpMsg.Properties.CreationTime)
+		setMetadata(part, "amqp_message_id", amqpMsg.Properties.MessageID)
 	}
 
 	msg.Append(part)
@@ -353,7 +357,7 @@ func (a *AMQP1) startRenewJob(amqpMsg *amqp.Message) chan struct{} {
 					return
 				}
 
-				a.log.Tracef("Renewed lock until %v", lockedUntil)
+				a.log.Tracef("Renewed message %v lock until %v", amqpMsg.Properties.MessageID, lockedUntil)
 			}
 		}
 	}()
