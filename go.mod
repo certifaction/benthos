@@ -1,11 +1,9 @@
 module github.com/Jeffail/benthos/v3
 
 require (
-	cloud.google.com/go v0.100.2 // indirect
-	cloud.google.com/go/bigquery v1.26.0
-	cloud.google.com/go/iam v0.1.0 // indirect
-	cloud.google.com/go/pubsub v1.17.1
-	cloud.google.com/go/storage v1.18.2
+	cloud.google.com/go/bigquery v1.44.0
+	cloud.google.com/go/pubsub v1.27.1
+	cloud.google.com/go/storage v1.27.0
 	github.com/AthenZ/athenz v1.10.43 // indirect
 	github.com/Azure/azure-sdk-for-go v61.1.0+incompatible
 	github.com/Azure/azure-storage-queue-go v0.0.0-20191125232315-636801874cdd
@@ -32,7 +30,6 @@ require (
 	github.com/benhoyt/goawk v1.13.0
 	github.com/bradfitz/gomemcache v0.0.0-20220106215444-fb4bf637b56d
 	github.com/cenkalti/backoff/v4 v4.1.2
-	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/clbanning/mxj/v2 v2.5.5
 	github.com/colinmarc/hdfs v1.1.3
 	github.com/containerd/continuity v0.2.2 // indirect
@@ -55,10 +52,9 @@ require (
 	github.com/gofrs/uuid v4.2.0+incompatible
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/golang-jwt/jwt/v4 v4.2.0 // indirect
-	github.com/golang/glog v1.0.0 // indirect
 	github.com/golang/protobuf v1.5.2
 	github.com/golang/snappy v0.0.4
-	github.com/google/go-cmp v0.5.6
+	github.com/google/go-cmp v0.5.9
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/websocket v1.4.2
@@ -104,7 +100,7 @@ require (
 	github.com/segmentio/ksuid v1.0.4
 	github.com/smira/go-statsd v1.3.2
 	github.com/spf13/cast v1.4.1
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.8.1
 	github.com/tilinna/z85 v1.0.0
 	github.com/twmb/franz-go v1.3.1
 	github.com/twmb/franz-go/pkg/kmsg v0.0.0-20220106200407-cfd3330d96f5
@@ -124,16 +120,13 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/crypto v0.0.0-20220213190939-1e6e3497d506
 	golang.org/x/exp v0.0.0-20200331195152-e8c3332aa8e5 // indirect
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd
-	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8
-	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-	golang.org/x/sys v0.0.0-20220209214540-3681064d5158 // indirect
-	golang.org/x/text v0.3.7
-	golang.org/x/time v0.0.0-20220210224613-90d013bbcef8 // indirect
-	google.golang.org/api v0.64.0
-	google.golang.org/genproto v0.0.0-20220107163113-42d7afdf6368 // indirect
-	google.golang.org/grpc v1.43.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+	golang.org/x/net v0.5.0
+	golang.org/x/oauth2 v0.4.0
+	golang.org/x/sync v0.1.0
+	golang.org/x/text v0.6.0
+	google.golang.org/api v0.103.0
+	google.golang.org/grpc v1.53.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 go 1.16
