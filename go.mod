@@ -41,7 +41,7 @@ require (
 	github.com/dgraph-io/ristretto v0.1.0
 	github.com/dnaeon/go-vcr v1.1.0 // indirect
 	github.com/docker/cli v20.10.12+incompatible // indirect
-	github.com/docker/docker v20.10.12+incompatible // indirect
+	github.com/docker/docker v24.0.7+incompatible // indirect
 	github.com/dustin/go-humanize v1.0.0
 	github.com/eclipse/paho.mqtt.golang v1.3.5
 	github.com/edsrzf/mmap-go v1.1.0
